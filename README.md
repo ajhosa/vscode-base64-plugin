@@ -11,7 +11,7 @@ Uses MACOS base64 cli tool under the hood.
 Node.js 20
 
 ## Installation
-
+Under releases download the `base64-vscode-1.0.0.vsix`, VSCode > View > Extensions > Drag it in the window to install. 
 1. Install Vscode extension tool
 ```
 npm install -g @vscode/vsce
@@ -21,7 +21,7 @@ npm install -g @vscode/vsce
 vsce package
 ```
 
-3. This creates a `base64-vscode-0.0.1.vsix` extension for vscode.
+3. This creates a `base64-vscode-1.0.0.vsix` extension for vscode.
 
 4. Install extension: Right click > Install Extension VSIX
 
@@ -41,7 +41,6 @@ vsce package
 
 ## Notes
 launch.json used for development, F5 to preview changes.
-No prebuild plugin file is available. Build it urself.
 
 ### ❗Only displays when plain text
 
