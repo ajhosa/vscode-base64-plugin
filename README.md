@@ -12,7 +12,7 @@ makes it lightweight.
 Node.js 20
 
 ## Installation
-Under github releases download the `base64-vscode-1.0.0.vsix`, <br>
+Under github releases download the [`base64-vscode-1.0.0.vsix`](https://github.com/ajhosa/vscode-base64-plugin/releases/download/v1.0.0/base64-vscode-1.0.0.vsix), <br>
 In `VSCode > View > Extensions` Drag it in the extensions window. Automatically installs.
 
 ### Button Location - Top Right Corner
