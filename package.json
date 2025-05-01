@@ -34,12 +34,12 @@
         "editor/title": [
           {
             "command": "extension.encodeBase64",
-            "when": "editorLangId == 'plaintext' && editorTextFocus",
+            "when": "resourceScheme == 'untitled'",
             "group": "navigation@1"
           },
           {
             "command": "extension.decodeBase64",
-            "when": "editorLangId == 'plaintext' && editorTextFocus",
+            "when": "resourceScheme == 'untitled'",
             "group": "navigation@2"
           }
         ]

@@ -18,7 +18,7 @@ function activate(context) {
         editor.document.positionAt(0),
         editor.document.positionAt(text.length)
       );
-      edit.replace(editor.document.uri, fullRange, encoded);
+      edit.replace(editor.document.uri, fullRange, encoded.trim());
       vscode.workspace.applyEdit(edit);
     });
     process.stdin.write(text);
@@ -41,7 +41,7 @@ function activate(context) {
         editor.document.positionAt(0),
         editor.document.positionAt(text.length)
       );
-      edit.replace(editor.document.uri, fullRange, decoded);
+      edit.replace(editor.document.uri, fullRange, decoded.trim());
       vscode.workspace.applyEdit(edit);
     });
     process.stdin.write(text);
