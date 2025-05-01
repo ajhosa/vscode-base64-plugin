@@ -1,0 +1,49 @@
+{
+    "name": "base64-vscode",
+    "displayName": "Base64 Encode/Decode",
+    "description": "Encode/decode full file contents using macOS base64.",
+    "version": "0.0.1",
+    "engines": {
+      "vscode": "^1.70.0"
+    },
+    "publisher": "yourname",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ajhosa/vscode-base64-plugin"
+    },
+    "activationEvents": [
+      "onCommand:extension.encodeBase64",
+      "onCommand:extension.decodeBase64"
+    ],
+    "main": "extension.js",
+    "contributes": {
+      "commands": [
+        {
+          "command": "extension.encodeBase64",
+          "title": "Encode Base64",
+          "tooltip": "Encode entire file using base64"
+        },
+        {
+          "command": "extension.decodeBase64",
+          "title": "Decode Base64",
+          "tooltip": "Decode entire file from base64"
+        }
+      ],
+      "menus": {
+        "editor/title": [
+          {
+            "command": "extension.encodeBase64",
+            "when": "editorTextFocus",
+            "group": "navigation@1"
+          },
+          {
+            "command": "extension.decodeBase64",
+            "when": "editorTextFocus",
+            "group": "navigation@2"
+          }
+        ]
+      }
+    }
+  }
+  
