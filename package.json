@@ -2,11 +2,11 @@
     "name": "base64-vscode",
     "displayName": "Base64 Encode/Decode",
     "description": "Encode/decode full file contents using macOS base64.",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "engines": {
       "vscode": "^1.70.0"
     },
-    "publisher": "yourname",
+    "publisher": "Ajmal",
     "license": "MIT",
     "repository": {
         "type": "git",
