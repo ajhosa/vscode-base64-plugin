@@ -1,28 +1,44 @@
 const vscode = require('vscode');
-const { exec } = require('child_process');
+const { spawn } = require('child_process');
 
 function activate(context) {
+  function runBase64Command(args, inputText, callback) {
+    const process = spawn('base64', args);
+    const chunks = [];
+
+    process.stdout.on('data', chunk => chunks.push(chunk));
+    process.stderr.on('data', err => {
+      vscode.window.showErrorMessage('base64 error: ' + err.toString());
+    });
+
+    process.on('close', code => {
+      if (code !== 0) {
+        vscode.window.showErrorMessage(`base64 process exited with code ${code}`);
+        return;
+      }
+      const outputBuffer = Buffer.concat(chunks);
+      const resultText = outputBuffer.toString('utf8');
+      callback(resultText);
+    });
+
+    process.stdin.write(inputText);
+    process.stdin.end();
+  }
+
   const encodeCommand = vscode.commands.registerCommand('extension.encodeBase64', () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) return;
 
     const text = editor.document.getText();
-
-    const process = exec('base64');
-    let encoded = '';
-    process.stdout.on('data', data => encoded += data);
-    process.stderr.on('data', err => vscode.window.showErrorMessage(err));
-    process.on('close', () => {
-      const edit = new vscode.WorkspaceEdit();
+    runBase64Command([], text, resultText => {
       const fullRange = new vscode.Range(
         editor.document.positionAt(0),
         editor.document.positionAt(text.length)
       );
-      edit.replace(editor.document.uri, fullRange, encoded.trim());
+      const edit = new vscode.WorkspaceEdit();
+      edit.replace(editor.document.uri, fullRange, resultText);
       vscode.workspace.applyEdit(edit);
     });
-    process.stdin.write(text);
-    process.stdin.end();
   });
 
   const decodeCommand = vscode.commands.registerCommand('extension.decodeBase64', () => {
@@ -30,22 +46,15 @@ function activate(context) {
     if (!editor) return;
 
     const text = editor.document.getText();
-
-    const process = exec('base64 -d');
-    let decoded = '';
-    process.stdout.on('data', data => decoded += data);
-    process.stderr.on('data', err => vscode.window.showErrorMessage(err));
-    process.on('close', () => {
-      const edit = new vscode.WorkspaceEdit();
+    runBase64Command(['-d'], text, resultText => {
       const fullRange = new vscode.Range(
         editor.document.positionAt(0),
         editor.document.positionAt(text.length)
       );
-      edit.replace(editor.document.uri, fullRange, decoded.trim());
+      const edit = new vscode.WorkspaceEdit();
+      edit.replace(editor.document.uri, fullRange, resultText);
       vscode.workspace.applyEdit(edit);
     });
-    process.stdin.write(text);
-    process.stdin.end();
   });
 
   context.subscriptions.push(encodeCommand, decodeCommand);
