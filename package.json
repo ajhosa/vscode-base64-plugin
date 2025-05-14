@@ -2,7 +2,7 @@
     "name": "base64-vscode",
     "displayName": "Base64 Encode/Decode",
     "description": "Encode/decode full file contents using macOS base64.",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "engines": {
       "vscode": "^1.70.0"
     },
