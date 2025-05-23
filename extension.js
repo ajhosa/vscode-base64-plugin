@@ -17,7 +17,7 @@ function activate(context) {
         return;
       }
       const outputBuffer = Buffer.concat(chunks);
-      const resultText = outputBuffer.toString('utf8');
+      const resultText = outputBuffer.toString('utf8').trim();
       callback(resultText);
     });
 
