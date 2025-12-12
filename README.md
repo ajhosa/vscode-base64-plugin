@@ -7,10 +7,6 @@ Base64 Encode / Decode Buttons in editor.
 Uses MACOS base64 cli tool under the hood,
 makes it lightweight.
 
-
-## Requirements
-Node.js 20
-
 ## Installation
 Under github releases download the [`base64-vscode-2.0.0.vsix`](https://github.com/ajhosa/vscode-base64-plugin/releases/download/v2.0.0/base64-vscode-2.0.0.vsix), <br>
 In `VSCode > View > Extensions` Drag it in the extensions window. Automatically installs.
@@ -23,6 +19,9 @@ In `VSCode > View > Extensions` Drag it in the extensions window. Automatically 
 2. Click any of the buttons to decode/encode (No need to select text)
 
 <br>
+
+## Requirements for compilation
+Node.js 20 
 
 ## Build Plugin urself
 Clone repo
